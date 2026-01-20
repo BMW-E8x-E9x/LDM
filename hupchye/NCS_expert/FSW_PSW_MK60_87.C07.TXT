@@ -1,0 +1,85 @@
+GETRIEBE
+	automatik
+DBC_MIN_AUSLOESEDRUCK
+	wert_01
+GEARMOMENTREGLER_MAX_HA_2
+	wert_01
+GEARMOMENTREGLER_MIN_HA_2
+	wert_04
+LENKWINKELKENNLINIE_2
+	wert_01
+UNTERSTEUERN_MUE_0_2
+	wert_01
+UNTERSTEUERN_MUE_1_2
+	wert_01
+VOLUMENDURCHFLUSSPARA_2
+	wert_00
+AFH_DOA
+	nicht_aktiv
+AFS
+	nicht_aktiv
+BB_RAB
+	nicht_aktiv
+ECBA
+	aktiv
+FBS
+	nicht_aktiv
+GMK
+	wert_00
+RPA
+	aktiv
+SST
+	aktiv
+TB_BDD
+	nicht_aktiv
+GMB
+	aktiv
+C8
+	wert_01
+SZL
+	wert_05
+ASL
+	aktiv
+RPA_SCHWELLE
+	wert_00
+FLR
+	wert_00
+	wert_01
+C07_UEBERSTEUERN_MUE_0_2
+	wert_05
+C07_UEBERSTEUERN_MUE_1_2
+	wert_06
+C07_BBV_KORR_HA
+	wert_00
+	wert_01
+C07_BBV_KORR_VA
+	wert_02
+C07_DRUCKMODELL_HINTERACH
+	wert_03
+C07_DRUCKMODELL_VORDERACH
+	wert_02
+C07_GMK_ECBA_HA
+	wert_00
+	wert_01
+C07_GMK_ECBA_VA
+	wert_00
+	wert_01
+C07_HSA
+	wert_00
+LUEFTER
+	nicht_aktiv
+C07_BAUART_MK60
+	wert_11
+C07_DELTA_PSI_BETA_LIMIT
+	wert_03
+C07_DF_DIR
+	wert_00
+	wert_01
+C07_MOTOR_ART_DSC_2
+	wert_00
+	wert_01
+C07_UNTERSTEUERSCHWELLE
+	wert_00
+	wert_02
+C07_BBV
+	wert_01
