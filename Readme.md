@@ -5,28 +5,32 @@ I think it's entirely possible to apply gas/brakes using CANbus commands down to
 Coding: https://www.e90post.com/forums/showthread.php?t=1530925&highlight=ldm&page=25#edit31117865
 
 https://github.com/HeinrichG-V12/E65_ReverseEngineering/blob/main/docs/0x0B6.md
+DBC (DME oriented):
+https://github.com/superwofy/E9X-M-CAN-Integration-Module/tree/main/CAN%20messages/dbc%20files
 
 http://share.qclt.com/bmw%E8%B5%84%E6%96%99/1102_Driving%20Dynamic%20Systems/English/Participant_manual/E90%20Driving%20Dynamics%20Systems.pdf
 
 - LDM comes with 544 option only on 6-cylinder pre-2007 cars after that it will not be from factory but it is needed for ACC retrofit  
-- also 544 option may come with xdrive cars and these car also can be 4-cylinder  and if 6-cylinder car in europe had'nt any cruise option at all it will require instrument cluster upgrade
-- hupcheye flashed his 320i with $540 and let it control torque to speed target
+- also 544 option may come with xdrive cars and these car also can be 4-cylinder  and if 6-cylinder car in europe hadn't any cruise option at all it will require instrument cluster upgrade
+- hupcheye coded his 320i with $540 and let it (DME?) control torque to speed target
 
 ### LDM control unit:
 With optional equipment 544 (up to 09/06) and **optional equipment 541 in the E90/E91/E92**, the scope of functions of the software for cruise control is implemented in a separate control unit: the LDM control unit.
 
 As of 09/06 or on the E92 with the series launch (06/06), the cruise control with braking function (optional extra 544) is integrated in the DSC control unit. The LDM control unit is therefore eliminated on optional extra 544 as of 09/06.
 
+![](Assets/Readme-20260120231406413.webp)
+
 A precondition for the function is that the engine / transmission control and the DSC are operating without faults.
 
 And the list of Can Msg. ID sent out from LDM module are :  
-1) **0x0BF - 191: RequestedWheelTorqueDriveTrain -> DME**  
-2) **0x0D5 - 213: Request_wheel_torque_brake -> DSC** 
-3) 0x193 - 403: DynamicCruiseControlStatus -> KOMBI
-4) 0X150 ?  336  Request_1_ACC -> ACC
-5) 0x153 ?  339  Request_2_ACC -> ACC
-6) ~~0x159 ?  345 ACC Object relative speed~~
-7) ~~0x15C ?  348 ACC Object relative distance~~
+-  **0x0BF - (191): RequestedWheelTorqueDriveTrain -> DME**  #TODO validate
+-  **0x0D5 - (213): Request_wheel_torque_brake -> DSC**  #TODO decode
+- 0x193 - (403): DynamicCruiseControlStatus -> KOMBI  #TODO validate
+- 0X150 ?  (336)  Request_1_ACC -> ACC
+- 0x153 ?  (339)  Request_2_ACC -> ACC
+- ~~0x159 ?  (345) ACC Object relative speed~~
+- ~~0x15C ?  (348) ACC Object relative distance~~
 
 5-series ACC requests:
 Retard request ACC	ACC	0x0AD TBD, [partially decoded](https://github.com/HeinrichG-V12/E65_ReverseEngineering/blob/main/docs/0x0AD.md)
@@ -36,18 +40,26 @@ Display ACC	ACC	0x190	[TBD](https://github.com/HeinrichG-V12/E65_ReverseEngineer
 
 That means my DME MEV1746 is not response to Msg. ID 0x193 not Msg. ID 0x0AA yet. And I believe Msg. ID 0x0AA is from DSC.  
 If I translate/convert Msg. ID 0x193 to Msg. ID 0x200 which accepted by 4cyl BMW for basic cruise control, then only we can see whether Msg. ID 0x0AA controls works or not .... Let's find out !
-
-![[Readme.md-20240809193828188.webp]]
+![Readme image](./Assets/Readme.md-20240809193828188.webp)
 
 ## Coding
 https://www.e90post.com/forums/showthread.php?t=1530925&highlight=dsc+pump&page=25#edit31117865
-## Restore:
 
+## Restoring
 https://www.e90post.com/forums/showthread.php?t=1530925&highlight=ldm&page=13#edit27562083
 
-![[Readme.md-20241107133338343.webp]]
 
-![[Readme.md-20241107135030813.webp]]![[Readme.md-20241107140239075.webp]]
-![[Readme.md-20241113233405741.webp]]
+
+Clues from BNE2000 document:
+
+![Readme image](./Assets/Readme.md-20241107133338343.webp)
+
+![Readme image](./Assets/Readme.md-20241107135030813.webp)
+
+![Readme image](./Assets/Readme.md-20241107140239075.webp)
+
+
+Decoded 0x0BF from LDM:
+![Readme image](./Assets/Readme.md-20241113233405741.webp)
 
 - Try `C0F_ECBA_DCC` to 0x3 to se if ACC brake will be listen in parallel.
