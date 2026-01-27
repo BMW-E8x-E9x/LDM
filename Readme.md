@@ -59,7 +59,7 @@ Clues from BNE2000 document:
 ![Readme image](./Assets/Readme.md-20241107140239075.webp)
 
 
-Decoded 0x0BF from LDM:
+[Decoded](https://github.com/BMW-E8x-E9x/opendbc/blob/5282ed5fe6a2653e9899b66fdef50b70b9c4ef5c/opendbc/dbc/bmw_e9x_e8x.dbc#L155-L163) 0x0BF - example from DSC (car with DCC):
 ![Readme image](./Assets/Readme.md-20241113233405741.webp)
 
 - Try `C0F_ECBA_DCC` to 0x3 to se if ACC brake will be listen in parallel.
